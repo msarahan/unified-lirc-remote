@@ -1,0 +1,90 @@
+-- Documentation
+-- http://www.unifiedremote.com/api
+
+-- OS Library
+-- http://www.unifiedremote.com/api/libs/os
+
+local script = libs.script;
+
+{% for device in power_devices %}
+
+--@help {{ device }} Power
+actions.{{ device }}_power = function ()
+	script.shell("irsend SEND_ONCE {{ device }} KEY_POWER");
+end
+
+{% endfor %}
+
+
+{% for device in direction_devices %}
+{% for direction in ["up", "down", "left", "right"] %}
+--@help {{ device }} {{ direction }}
+actions.{{ device }}_{{ direction }} = function ()
+	script.shell("irsend SEND_ONCE {{device}} KEY_{{ direction.upper() }}");
+end
+
+--@help {{ device }} {{ direction }} - start
+actions.{{ device }}_{{ direction }}_start = function ()
+	script.shell("irsend SEND_START {{device}} KEY_{{ direction.upper() }}");
+end
+
+--@help {{ device }} {{ direction }} - stop
+actions.{{ device }}_{{ direction }}_stop = function ()
+	script.shell("irsend SEND_STOP {{device}} KEY_{{ direction.upper() }}");
+end
+
+{% endfor %}
+
+--@help {{ device }} Enter
+actions.{{ device }}_enter = function ()
+	script.shell("irsend SEND_ONCE {{device}} KEY_ENTER");
+end
+
+{% endfor %}
+
+
+{% for device in volume_devices %}
+
+{% for direction in ["up", "down"] %}
+--@help {{ device }} Volume {{ direction }}
+actions.{{ device }}_volume_{{ direction }} = function ()
+	script.shell("irsend SEND_ONCE {{device}} KEY_VOLUME{{ direction.upper() }}");
+end
+
+--@help {{ device }} Volume {{ direction }} - start
+actions.{{ device }}_volume_{{ direction }}_start = function ()
+	script.shell("irsend SEND_START {{device}} KEY_VOLUME{{ direction.upper() }}");
+end
+
+--@help {{ device }} Volume {{ direction }} - stop
+actions.{{ device }}_volume_{{ direction }}_stop = function ()
+	script.shell("irsend SEND_STOP {{device}} KEY_VOLUME{{ direction.upper() }}");
+end
+
+{% endfor %}
+{% endfor %}
+
+
+{% for device in playback_devices %}
+
+--@help {{ device }} Play
+actions.{{ device }}_play = function ()
+	script.shell("irsend SEND_ONCE {{device}} KEY_PLAY");
+end
+
+--@help {{ device }} Pause
+actions.{{ device }}_pause = function ()
+	script.shell("irsend SEND_ONCE {{device}} KEY_PAUSE");
+end
+
+--@help {{ device }} Next
+actions.{{ device }}_next = function ()
+	script.shell("irsend SEND_ONCE {{device}} KEY_NEXTSONG");
+end
+
+--@help {{ device }} Previous
+actions.{{ device }}_previous = function ()
+	script.shell("irsend SEND_ONCE {{device}} KEY_PREVIOUSSONG");
+end
+
+{% endfor %}

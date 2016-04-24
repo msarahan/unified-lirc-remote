@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 	<row>
-		<button text="Geezer TV Power" ontap="geezer_tv_power" />
+		<button text="TV Power" ontap="sceptre_power" />
 	</row>
-  <row>
-    <column>
-      <grid color="blue">
-		    <button icon="vup" ontap="volume_up" ondown="volume_up_start" onup="volume_up_stop" />
-		    <button icon="vdown" ontap="volume_down" ondown="volume_down_start" onup="volume_down_stop" />
-      </grid>
-    </column>
+  <row color=blue>
+		<button icon="vup" ontap="onkyo_volume_up" ondown="onkyo_volume_up_start" onup="onkyo_volume_up_stop" />
+		<button icon="vdown" ontap="onkyo_volume_down" ondown="onkyo_volume_down_start" onup="onkyo_volume_down_stop" />
   </row>
 </layout>

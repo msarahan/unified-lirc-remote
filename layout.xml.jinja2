@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+	<row>
+		<button text="Geezer TV Power" ontap="geezer_tv_power" />
+	</row>
+  <row>
+    <column>
+      <grid color="blue">
+		    <button icon="vup" ontap="volume_up" ondown="volume_up_start" onup="volume_up_stop" />
+		    <button icon="vdown" ontap="volume_down" ondown="volume_down_start" onup="volume_down_stop" />
+      </grid>
+    </column>
+  </row>
+</layout>
+
+
+{% playback devices %}
+<row>
+  <button icon="play" ontap="{{ device }}_play"/>
+  <button icon="pause" ontap="{{ device }}_pause"/>
+  <button icon="previous" ontap="{{ device }}_previous"/>
+  <button icon="next" ontap="{{ device }}_next"/>
+</row>
+{% %}
+
+
+{% dpad %}
+<row>
+  <space />
+  <button icon="up"/>
+  <space />
+</row>
+<row>
+  <button icon="left"/>
+  <button icon="select"/>
+  <button icon="right"/>
+</row>
+<row>
+  <space />
+  <button icon="down" />
+  <space />
+</row>
+
+{% %}

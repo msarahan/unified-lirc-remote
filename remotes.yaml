@@ -1,0 +1,21 @@
+# things that have menu navigation buttons
+direction_devices:
+    - onkyo
+    - samsung
+    - sceptre
+
+# things that have power buttons
+power_devices:
+    - samsung
+    - sceptre
+
+# things that have play/pause/next/previous
+playback_devices:
+    # blu-ray player
+    - samsung
+    # For pandora
+    - onkyo
+
+# things that should have volume controls
+volume_devices:
+    - onkyo
