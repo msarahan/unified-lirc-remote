@@ -5,10 +5,10 @@
 	</row>
   <row>
     <column>
-      <row>
+      <grid color="blue">
 		    <button icon="vup" ontap="volume_up" ondown="volume_up_start" onup="volume_up_stop" />
 		    <button icon="vdown" ontap="volume_down" ondown="volume_down_start" onup="volume_down_stop" />
-      </row>
+      </grid>
     </column>
   </row>
 </layout>
