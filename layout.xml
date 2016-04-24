@@ -3,4 +3,12 @@
 	<row>
 		<button text="Geezer TV Power" ontap="geezer_tv_power" />
 	</row>
+  <row>
+    <column>
+      <row>
+		    <button icon="vup" ontap="volume_up" ondown="volume_up_start" onup="volume_up_stop" />
+		    <button icon="vdown" ontap="volume_down" ondown="volume_down_start" onup="volume_down_stop" />
+      </row>
+    </column>
+  </row>
 </layout>

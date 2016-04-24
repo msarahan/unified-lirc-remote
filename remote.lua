@@ -26,8 +26,28 @@ actions.volume_up = function ()
 	os.start("irsend SEND_ONCE onkyo KEY_VOLUMEUP");
 end
 
+--@help Volume Up - start
+actions.volume_up_start = function ()
+	os.start("irsend SEND_START onkyo KEY_VOLUMEUP");
+end
+
+--@help Volume Up - stop
+actions.volume_up_stop = function ()
+	os.start("irsend SEND_STOP onkyo KEY_VOLUMEUP");
+end
+
 --@help Volume Down
 actions.volume_down = function ()
 	os.start("irsend SEND_ONCE onkyo KEY_VOLUMEDOWN");
+end
+
+--@help Volume Down - start
+actions.volume_down_start = function ()
+	os.start("irsend SEND_START onkyo KEY_VOLUMEDOWN");
+end
+
+--@help Volume Down - stop
+actions.volume_down_stop = function ()
+	os.start("irsend SEND_STOP onkyo KEY_VOLUMEDOWN");
 end
 

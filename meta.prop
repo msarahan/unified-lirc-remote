@@ -1,4 +1,4 @@
-meta.name: Custom Run
-meta.author: Examples
-meta.description: How to run custom programs.
-meta.tags: example
+meta.name: LIRC Raspberry Pi Master remote
+meta.author: Michael Sarahan
+meta.description: Control a unified remote with Raspberry Pi driving an IR LED with LIRC
+meta.tags: Linux, Raspberry Pi, LIRC, IR, Remote
