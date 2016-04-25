@@ -36,4 +36,5 @@ your Unified Remote server's custom remote location
   - [Unified remote source code docs](https://github.com/unifiedremote/Docs)  
   - [Icons for Unified Remote](https://github.com/unifiedremote/Docs/blob/master/res/icons.md)
   - [start urserver as service](https://github.com/qbwaggle/vpnkillswitch/tree/master/urserver)
-  
+  - [IR codes at Global Cache](https://irdb.globalcache.com/Home/Database) - use these if irrecord doesn't work for you
+  - [HARCToolbox](http://www.harctoolbox.org/) IRScrutinizer can take IR codes from Global Cache and output lirc files
