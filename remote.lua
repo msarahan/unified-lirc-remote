@@ -6,21 +6,47 @@
 
 local script = libs.script;
 
+-- Custom, one-off functions go here
+
+--@help Onkyo TV/CD Source
+actions.onkyo_tv_cd_source = function ()
+	script.shell("irsend SEND_ONCE onkyo KEY_TV");
+end
+
+--@help Onkyo Net Source
+actions.onkyo_net_source = function ()
+	script.shell("irsend SEND_ONCE onkyo KEY_MP3");
+end
+
+--@help Sceptre Source
+actions.sceptre_source = function ()
+	script.shell("irsend SEND_START sceptre KEY_SWITCHVIDEOMODE");
+  os.sleep(0.1)
+	script.shell("irsend SEND_STOP sceptre KEY_SWITCHVIDEOMODE");
+end
+
+--@help source switch handler
+actions.update_source = function ()
+end
+
+-- Loops for templated multiple devices start here.
+
+
 
 
 --@help samsung Power
 actions.samsung_power = function ()
-	script.shell("irsend SEND_ONCE samsung KEY_POWER");
+	script.shell("irsend SEND_START samsung KEY_POWER");
+  os.sleep(0.5)
+	script.shell("irsend SEND_STOP samsung KEY_POWER");
 end
-
-
 
 --@help sceptre Power
 actions.sceptre_power = function ()
-	script.shell("irsend SEND_ONCE sceptre KEY_POWER");
+	script.shell("irsend SEND_START sceptre KEY_POWER");
+  os.sleep(0.5)
+	script.shell("irsend SEND_STOP sceptre KEY_POWER");
 end
-
-
 
 
 
@@ -40,7 +66,6 @@ actions.onkyo_up_stop = function ()
 	script.shell("irsend SEND_STOP onkyo KEY_UP");
 end
 
-
 --@help onkyo down
 actions.onkyo_down = function ()
 	script.shell("irsend SEND_ONCE onkyo KEY_DOWN");
@@ -56,7 +81,6 @@ actions.onkyo_down_stop = function ()
 	script.shell("irsend SEND_STOP onkyo KEY_DOWN");
 end
 
-
 --@help onkyo left
 actions.onkyo_left = function ()
 	script.shell("irsend SEND_ONCE onkyo KEY_LEFT");
@@ -71,7 +95,6 @@ end
 actions.onkyo_left_stop = function ()
 	script.shell("irsend SEND_STOP onkyo KEY_LEFT");
 end
-
 
 --@help onkyo right
 actions.onkyo_right = function ()
@@ -89,12 +112,12 @@ actions.onkyo_right_stop = function ()
 end
 
 
-
 --@help onkyo Enter
 actions.onkyo_enter = function ()
-	script.shell("irsend SEND_ONCE onkyo KEY_ENTER");
+	script.shell("irsend SEND_START onkyo KEY_ENTER");
+  os.sleep(0.1)
+	script.shell("irsend SEND_START onkyo KEY_ENTER");
 end
-
 
 
 --@help samsung up
@@ -112,7 +135,6 @@ actions.samsung_up_stop = function ()
 	script.shell("irsend SEND_STOP samsung KEY_UP");
 end
 
-
 --@help samsung down
 actions.samsung_down = function ()
 	script.shell("irsend SEND_ONCE samsung KEY_DOWN");
@@ -128,7 +150,6 @@ actions.samsung_down_stop = function ()
 	script.shell("irsend SEND_STOP samsung KEY_DOWN");
 end
 
-
 --@help samsung left
 actions.samsung_left = function ()
 	script.shell("irsend SEND_ONCE samsung KEY_LEFT");
@@ -143,7 +164,6 @@ end
 actions.samsung_left_stop = function ()
 	script.shell("irsend SEND_STOP samsung KEY_LEFT");
 end
-
 
 --@help samsung right
 actions.samsung_right = function ()
@@ -161,12 +181,12 @@ actions.samsung_right_stop = function ()
 end
 
 
-
 --@help samsung Enter
 actions.samsung_enter = function ()
-	script.shell("irsend SEND_ONCE samsung KEY_ENTER");
+	script.shell("irsend SEND_START samsung KEY_ENTER");
+  os.sleep(0.1)
+	script.shell("irsend SEND_START samsung KEY_ENTER");
 end
-
 
 
 --@help sceptre up
@@ -184,7 +204,6 @@ actions.sceptre_up_stop = function ()
 	script.shell("irsend SEND_STOP sceptre KEY_UP");
 end
 
-
 --@help sceptre down
 actions.sceptre_down = function ()
 	script.shell("irsend SEND_ONCE sceptre KEY_DOWN");
@@ -200,7 +219,6 @@ actions.sceptre_down_stop = function ()
 	script.shell("irsend SEND_STOP sceptre KEY_DOWN");
 end
 
-
 --@help sceptre left
 actions.sceptre_left = function ()
 	script.shell("irsend SEND_ONCE sceptre KEY_LEFT");
@@ -215,7 +233,6 @@ end
 actions.sceptre_left_stop = function ()
 	script.shell("irsend SEND_STOP sceptre KEY_LEFT");
 end
-
 
 --@help sceptre right
 actions.sceptre_right = function ()
@@ -233,14 +250,12 @@ actions.sceptre_right_stop = function ()
 end
 
 
-
 --@help sceptre Enter
 actions.sceptre_enter = function ()
-	script.shell("irsend SEND_ONCE sceptre KEY_ENTER");
+	script.shell("irsend SEND_START sceptre KEY_ENTER");
+  os.sleep(0.1)
+	script.shell("irsend SEND_START sceptre KEY_ENTER");
 end
-
-
-
 
 
 
@@ -260,7 +275,6 @@ actions.onkyo_volume_up_stop = function ()
 	script.shell("irsend SEND_STOP onkyo KEY_VOLUMEUP");
 end
 
-
 --@help onkyo Volume down
 actions.onkyo_volume_down = function ()
 	script.shell("irsend SEND_ONCE onkyo KEY_VOLUMEDOWN");
@@ -275,8 +289,6 @@ end
 actions.onkyo_volume_down_stop = function ()
 	script.shell("irsend SEND_STOP onkyo KEY_VOLUMEDOWN");
 end
-
-
 
 
 
@@ -301,8 +313,6 @@ end
 actions.samsung_previous = function ()
 	script.shell("irsend SEND_ONCE samsung KEY_PREVIOUSSONG");
 end
-
-
 
 --@help onkyo Play
 actions.onkyo_play = function ()

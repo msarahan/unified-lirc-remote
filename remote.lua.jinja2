@@ -6,15 +6,41 @@
 
 local script = libs.script;
 
-{% for device in power_devices %}
+-- Custom, one-off functions go here
 
---@help {{ device }} Power
-actions.{{ device }}_power = function ()
-	script.shell("irsend SEND_ONCE {{ device }} KEY_POWER");
+--@help Onkyo TV/CD Source
+actions.onkyo_tv_cd_source = function ()
+	script.shell("irsend SEND_ONCE onkyo KEY_TV");
 end
 
-{% endfor %}
+--@help Onkyo Net Source
+actions.onkyo_net_source = function ()
+	script.shell("irsend SEND_ONCE onkyo KEY_MP3");
+end
 
+--@help Sceptre Source
+actions.sceptre_source = function ()
+	script.shell("irsend SEND_START sceptre KEY_SWITCHVIDEOMODE");
+  os.sleep(0.1)
+	script.shell("irsend SEND_STOP sceptre KEY_SWITCHVIDEOMODE");
+end
+
+--@help source switch handler
+actions.update_source = function ()
+end
+
+-- Loops for templated multiple devices start here.
+
+
+
+{% for device in power_devices %}
+--@help {{ device }} Power
+actions.{{ device }}_power = function ()
+	script.shell("irsend SEND_START {{ device }} KEY_POWER");
+  os.sleep(0.5)
+	script.shell("irsend SEND_STOP {{ device }} KEY_POWER");
+end
+{% endfor %}
 
 {% for device in direction_devices %}
 {% for direction in ["up", "down", "left", "right"] %}
@@ -32,19 +58,17 @@ end
 actions.{{ device }}_{{ direction }}_stop = function ()
 	script.shell("irsend SEND_STOP {{device}} KEY_{{ direction.upper() }}");
 end
-
 {% endfor %}
 
 --@help {{ device }} Enter
 actions.{{ device }}_enter = function ()
-	script.shell("irsend SEND_ONCE {{device}} KEY_ENTER");
+	script.shell("irsend SEND_START {{device}} KEY_ENTER");
+  os.sleep(0.1)
+	script.shell("irsend SEND_START {{device}} KEY_ENTER");
 end
-
 {% endfor %}
 
-
 {% for device in volume_devices %}
-
 {% for direction in ["up", "down"] %}
 --@help {{ device }} Volume {{ direction }}
 actions.{{ device }}_volume_{{ direction }} = function ()
@@ -60,13 +84,11 @@ end
 actions.{{ device }}_volume_{{ direction }}_stop = function ()
 	script.shell("irsend SEND_STOP {{device}} KEY_VOLUME{{ direction.upper() }}");
 end
-
 {% endfor %}
 {% endfor %}
 
 
 {% for device in playback_devices %}
-
 --@help {{ device }} Play
 actions.{{ device }}_play = function ()
 	script.shell("irsend SEND_ONCE {{device}} KEY_PLAY");
@@ -86,5 +108,5 @@ end
 actions.{{ device }}_previous = function ()
 	script.shell("irsend SEND_ONCE {{device}} KEY_PREVIOUSSONG");
 end
-
 {% endfor %}
+

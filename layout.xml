@@ -1,10 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-	<row>
-		<button text="TV Power" ontap="sceptre_power" />
-	</row>
-  <row color=blue>
-		<button icon="vup" ontap="onkyo_volume_up" ondown="onkyo_volume_up_start" onup="onkyo_volume_up_stop" />
-		<button icon="vdown" ontap="onkyo_volume_down" ondown="onkyo_volume_down_start" onup="onkyo_volume_down_stop" />
+<layout onVolumeUp="onkyo_volume_up" onVolumeDown="onkyo_volume_down">
+  <row>
+    <button text="TV" icon="power" color="red" ontap="sceptre_power" />
+    <button text="Blu-ray" icon="power" color="blue" ontap="samsung_power" />
+    <button text="Receiver" icon="power" color="green" ontap="onkyo_power" />
+  </row>
+  <row>
+    <tabs onchange="update_source">
+      <tab text="PC" color="red" index="0">
+        <button text="pr0n" />
+      </tab>
+      <tab text="Blu-Ray" color="blue" index="1">
+        <button icon="rwd" ondown="samsung_rewind_start" onup="samsung_rewind_stop" />
+        <button icon="ff" ondown="samsung_fastforward_start" onup="samsung_fastforward_stop" />
+        <button icon="play" ontap="samsung_play" />
+        <button icon="pause" ontap="samsung_pause" />
+        <button icon="previous" ontap="samsung_previous" />
+        <button icon="next" ontap="samsung_next" />
+      </tab>
+      <tab text="Receiver" color="green" index="2">
+        <button icon="window" ontap="onkyo_tv_cd_source" />
+        <button icon="vup" ontap="onkyo_net_source" />
+        <button icon="play" ontap="onkyo_play" />
+        <button icon="pause" ontap="onkyo_pause" />
+        <button icon="next" ontap="onkyo_next" />
+      </tab>
+    </tabs>
+  </row>
+  <row>
+    <tabs>
+      <tab text="TV" color="red" index="0">
+        <row>
+          <button icon="window" ontap="sceptre_source" />
+          <button icon="up" ontap="sceptre_up" ondown="sceptre_up_start" onup="sceptre_up_stop" />
+          <space />
+        </row>
+        <row>
+          <button icon="left" ontap="sceptre_left" ondown="sceptre_left_start" onup="sceptre_left_stop" />
+          <button icon="select" ontap="sceptre_enter" />
+          <button icon="right" ontap="sceptre_right" ondown="sceptre_right_start" onup="sceptre_right_stop" />
+        </row>
+        <row>
+          <space />
+          <button icon="down" ontap="sceptre_down" ondown="sceptre_down_start" onup="sceptre_down_stop" />
+          <space />
+        </row>
+      </tab>
+      <tab text="Blu-Ray" color="blue" index="1">
+        <row>
+          <space />
+          <button icon="up" ontap="samsung_up" ondown="samsung_up_start" onup="samsung_up_stop" />
+          <space />
+        </row>
+        <row>
+          <button icon="left" ontap="samsung_left" ondown="samsung_left_start" onup="samsung_left_stop" />
+          <button icon="select" ontap="samsung_enter" />
+          <button icon="right" ontap="samsung_right" ondown="samsung_right_start" onup="samsung_right_stop" />
+        </row>
+        <row>
+          <space />
+          <button icon="down" ontap="samsung_down" ondown="samsung_down_start" onup="samsung_down_stop" />
+          <space />
+        </row>
+      </tab>
+      <tab text="Receiver" color="green" index="2">
+        <row>
+          <space />
+          <button icon="up" ontap="onkyo_up" ondown="onkyo_up_start" onup="onkyo_up_stop" />
+          <space />
+        </row>
+        <row>
+          <button icon="left" ontap="onkyo_left" ondown="onkyo_left_start" onup="onkyo_left_stop" />
+          <button icon="select" ontap="onkyo_enter" />
+          <button icon="right" ontap="onkyo_right" ondown="onkyo_right_start" onup="onkyo_right_stop" />
+        </row>
+        <row>
+          <space />
+          <button icon="down" ontap="onkyo_down" ondown="onkyo_down_start" onup="onkyo_down_stop" />
+          <space />
+        </row>
+      </tab>
+    </tabs>
   </row>
 </layout>
