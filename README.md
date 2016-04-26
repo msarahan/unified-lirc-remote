@@ -16,9 +16,6 @@ require switching remotes (or remote states to a different setting).
 
 The Raspberry Pi can send and receive IR signals with LIRC.
 
-There's an excellent tutorial here:
-http://alexba.in/blog/2013/01/06/setting-up-lirc-on-the-raspberrypi/
-
 This project assumes that you already have your Raspberry Pi set up with
 appropriate remote signals, and with the IR emitter working correctly.
 
@@ -29,6 +26,15 @@ on your Universal Remote on your phone.
 # How to install 
 
 See
-https://www.unifiedremote.com/tutorials/how-to-install-a-custom-remote for
+[Unified remote's page on this](https://www.unifiedremote.com/tutorials/how-to-install-a-custom-remote) for
 instructions. Basically, you need to put the contents of this repository into
 your Unified Remote server's custom remote location
+
+# Reference resources:
+
+  - [LIRC setup on RPi + circuit diagram](http://alexba.in/blog/2013/01/06/setting-up-lirc-on-the-raspberrypi/)
+  - [Unified remote source code docs](https://github.com/unifiedremote/Docs)  
+  - [Icons for Unified Remote](https://github.com/unifiedremote/Docs/blob/master/res/icons.md)
+  - [start urserver as service](https://github.com/qbwaggle/vpnkillswitch/tree/master/urserver)
+  - [IR codes at Global Cache](https://irdb.globalcache.com/Home/Database) - use these if irrecord doesn't work for you
+  - [HARCToolbox](http://www.harctoolbox.org/) - IRScrutinizer can take IR codes from Global Cache and output lirc files
